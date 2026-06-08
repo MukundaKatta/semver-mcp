@@ -10,7 +10,7 @@ Backed by the `semver` npm package. Full range syntax — `^`, `~`, `>=`, `*`,
 
 ## Tools
 
-- `parse` — `"1.2.3-beta.1+build.42"` → `{ major:1, minor:2, patch:3, prerelease:["beta",1], build:["build.42"] }`
+- `parse` — `"1.2.3-beta.1+build.42"` → `{ major:1, minor:2, patch:3, prerelease:["beta",1], build:["build","42"] }`
 - `compare` — `compare("1.0.0","1.0.1")` → `-1`
 - `satisfies` — `satisfies("1.2.3","^1.0.0")` → `true`
 - `inc` — `inc("1.2.3","minor")` → `"1.3.0"`. Supports `premajor`/`preminor`/`prepatch`/`prerelease` with optional `identifier`.

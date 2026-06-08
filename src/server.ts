@@ -44,6 +44,11 @@ export function compareVersions(a: string, b: string): number {
 }
 
 export function satisfiesRange(version: string, range: string): boolean {
+  // semver.satisfies silently returns false for invalid versions/ranges, which
+  // hides typos behind a confident-looking `false`. Validate up front so a bad
+  // input surfaces as a clear error instead.
+  if (semver.valid(version) === null) throw new Error(`not a valid semver: ${version}`);
+  if (semver.validRange(range) === null) throw new Error(`not a valid range: ${range}`);
   return semver.satisfies(version, range);
 }
 
